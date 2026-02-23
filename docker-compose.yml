@@ -1,0 +1,38 @@
+
+#docker -compose file is typically in the root and it defines and orchestrates all the containers or docker file
+#Each item under services = one container.this is what we already define in the docker file 
+services:
+ #This defines a service named backend 1
+  backend1:
+    build: ./backend #goes to the backend file and checks if there is a docker file and runs it here 
+    environment:
+      - REDIS_URL=redis://redis:6379
+      #run redis before the backend 1
+    depends_on:
+      - redis
+
+  backend2:
+    build: ./backend
+    environment:
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - redis
+
+  backend3:
+    build: ./backend
+    environment:
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:7
+
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - backend1
+      - backend2
+      - backend3
