@@ -26,7 +26,7 @@ function setupsockets(io)
     
 
 }
-module.exports={setupsockets}
+export {setupsockets}
 //objects and de structuring {} and socket.join simply creates room 
 //so your saying that a server can only know the person who connected to that particular server .so when someone sends message to any server my works to send it first to the redis and redis will send it ti everyone else right simple.but will redis send it to the same server that sends the message because thats a pronblem
 //so basically you take a huge computer and download this redis in it and you send any request or storing thing and it stores in its ram itself but i guess because of this you can only store limited things and there can be performace issue
