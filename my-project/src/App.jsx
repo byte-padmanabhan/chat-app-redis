@@ -1,8 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { io } from "socket.io-client";
-
-const socket = io("http://localhost:80");
+const socket = io("https://chat-app-redis-inxq.onrender.com");
 
 export default function App() {
   const [messages, setMessages] = useState([]);
